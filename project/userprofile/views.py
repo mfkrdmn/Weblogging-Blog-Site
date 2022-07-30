@@ -41,7 +41,6 @@ def register(request):
     else:
         return render(request, 'register.html')
 
-
 def login(request):
 
     if request.method == 'POST':
@@ -63,3 +62,13 @@ def login(request):
 def logout(request):
     auth.logout(request)
     return redirect('/login')
+
+def profile(request,pk):
+
+    user_object = User.objects.get(username=pk)
+
+    context = {
+        'user_object': user_object,
+    }
+
+    return render(request, "profile.html", context)
