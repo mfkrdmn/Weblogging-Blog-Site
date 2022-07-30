@@ -201,6 +201,7 @@ button {
 .layout_padding {
 	padding-top: 90px;
 	padding-bottom: 90px;
+	background-color: white;
 }
 
 .layout_padding_2 {
@@ -442,14 +443,6 @@ header {
     line-height: 120px;
 }
 
-.logo_section::after {
-    position: absolute;
-    width: 58px;
-    height: 122px;
-    background: url('../images/head_d.png');
-    content: "";
-    right: -57px;
-}
 
 nav.main-menu {
 	float: left;
