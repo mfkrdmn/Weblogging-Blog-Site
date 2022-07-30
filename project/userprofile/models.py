@@ -10,7 +10,6 @@ class Profile(models.Model):
     fullName = models.CharField(max_length=50, blank=True)
     bio =  models.TextField(blank=True)
     profileimg = models.ImageField(upload_to='profile_images', default="profile.png")
-    backgroundimg = models.ImageField(upload_to='backgroundimg_images', default="images/profile.png")
     email = models.CharField(max_length=50, blank=True)
 
     def __str__(self) :

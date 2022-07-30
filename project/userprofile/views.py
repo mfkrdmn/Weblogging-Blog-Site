@@ -60,15 +60,47 @@ def login(request):
 
 @login_required(login_url='/login/')
 def logout(request):
+
     auth.logout(request)
     return redirect('/login')
 
+@login_required(login_url='signin')
 def profile(request,pk):
 
     user_object = User.objects.get(username=pk)
+    user_profile = Profile.objects.get(user=user_object)
 
     context = {
         'user_object': user_object,
+        'user_profile' : user_profile
     }
 
     return render(request, "profile.html", context)
+
+@login_required(login_url='signin')
+def settings(request):
+
+    user_profile = Profile.objects.get(user=request.user)
+
+    if request.method == "POST":
+        if request.FILES.get("profileimg") == None:
+            fullName = request.POST["fullName"]
+            profileimg = user_profile.profileimg
+            bio = request.POST["bio"]
+
+            user_profile.bio = bio
+            user_profile.fullName = fullName
+            user_profile.profileimg = profileimg
+
+        if request.FILES.get("profileimg") != None:
+            fullName = request.POST["fullName"]
+            profileimg = request.FILES.get("profileimg")
+            bio = request.POST["bio"]
+
+            user_profile.bio = bio
+            user_profile.fullName = fullName
+            user_profile.profileimg = profileimg
+        
+        return redirect("home")
+    
+    return render(request, "profile.html", {"user_profile" : user_profile})
