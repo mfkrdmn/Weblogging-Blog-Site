@@ -91,6 +91,7 @@ def settings(request):
             user_profile.bio = bio
             user_profile.fullName = fullName
             user_profile.profileimg = profileimg
+            user_profile.save()
 
         if request.FILES.get("profileimg") != None:
             fullName = request.POST["fullName"]
@@ -100,6 +101,7 @@ def settings(request):
             user_profile.bio = bio
             user_profile.fullName = fullName
             user_profile.profileimg = profileimg
+            user_profile.save()
         
         return redirect("home")
     
