@@ -1,0 +1,153 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- Site CSS -->
+<link rel="stylesheet" href="{% static 'css/st.css' %}">
+<!-- Custom CSS -->
+<link rel="stylesheet" href="{% static 'css/custom.css' %}">
+
+
+<body class="host_version"> 
+
+	{% for i in single_post %}
+
+    <div id="overviews" class="section wb">
+        <div class="container">
+            <div class="row"> 
+                <div class="col-lg-9 blog-post-single">
+                    <div class="blog-item">
+						<div class="image-blog">
+							<a href="#"><img src="{{i.picture.url}}" alt="#" /></a>
+						</div>
+						<div class="post-content">
+							<div class="post-date">
+								<span class="day">30</span>
+								<span class="month">Nov</span>
+							</div>
+							<div class="meta-info-blog">
+								<span><i class="fa fa-calendar"></i> <a href="#">{{i.date_posted}}</a> </span>
+								<span><i class="fa fa-tag"></i>  <a href="#">News</a> </span>
+								<span><i class="fa fa-comments"></i> <a href="#">12 Comments</a></span>
+							</div>
+							<div class="blog-title">
+								<h2><a href="#" title="">{{i.title}}</a></h2>
+							</div>
+							<div class="blog-desc">
+								<p>{{i.body | safe}} </p>
+							</div>							
+						</div>
+					</div>
+
+					{% for j in user_profile %}
+
+					{% if i.user == j.user.username %}
+					
+					<div class="blog-author" style="height: 150px;">
+						<div class="author-bio">
+							<h3 class="author_name"><a href="#">{{i.user}}</a></h3>
+							<p class="author_det">
+								{{j.bio}}
+							</p>
+						</div>
+						<div class="author-desc">
+							<img src="{{j.profileimg.url}}" alt="about author">
+							<ul class="author-social">
+								<li><a href="#"><i class="fa-brands fa-facebook"></i></a></li>
+								<li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+								<li><a href="#"><i class="fa-brands fa-linkedin"></i></li>
+							</ul>
+						</div>
+					</div>
+					{% endif %}
+					{% endfor %}
+
+	{% endfor %}
+					
+					<div class="blog-comments">
+						<h4>Comments (3)</h4>
+						<div id="comment-blog">
+							<ul class="comment-list">
+								<li class="comment">
+									<div class="comment-container">
+										<h5 class="comment-author"><a href="#">John Smith</a></h5>
+										<div class="comment-meta">
+											<a href="#" class="comment-date link-style1">February 22, 2015</a>
+											<a class="comment-reply-link link-style3" href="#respond">Reply »</a>
+										</div>
+										<div class="comment-body">
+											<p>Ne omnis saperet docendi nec, eos ea alii molestiae aliquand. Latine fuisset mele, mandamus atrioque eu mea, wi forensib argumentum vim an. Te viderer conceptam sed, mea et delenit fabellas probat.</p>
+										</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="comments-form">
+						<h4>Leave a comment</h4>
+						<div class="comment-form-main">
+							<form action="#">
+								<div class="row">
+									<div class="col-md-6">
+										<div class="form-group">
+											<input class="form-control" name="commenter-name" placeholder="Name" id="commenter-name" type="text">
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											<input class="form-control" name="commenter-email" placeholder="Email" id="commenter-email" type="text">
+										</div>
+									</div>
+									<div class="col-md-12">
+										<div class="form-group">
+											<textarea class="form-control" name="commenter-message" placeholder="Message" id="commenter-message" cols="30" rows="2"></textarea>
+										</div>
+									</div>
+									<div class="col-md-12 post-btn">
+										<button class="hover-btn-new orange"><span>Post Comment</span></button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+					
+                </div><!-- end col -->
+				<div class="col-lg-3 col-12 right-single">
+					<div class="widget-categories">
+						<h3 class="widget-title">Categories</h3>
+						<ul>
+							<li><a href="#">Political Science</a></li>
+							<li><a href="#">Business Leaders Guide</a></li>
+							<li><a href="#">Become a Product Manage</a></li>
+							<li><a href="#">Language Education</a></li>
+							<li><a href="#">Micro Biology</a></li>
+							<li><a href="#">Social Media Management</a></li>
+						</ul>
+					</div>
+					<div class="widget-tags">
+						<h3 class="widget-title">Search Tags</h3>
+						<ul class="tags">
+							<li><a href="#"><b>business</b></a></li>
+							<li><a href="#"><b>jquery</b></a></li>
+							<li><a href="#">corporate</a></li>
+							<li><a href="#">portfolio</a></li>
+							<li><a href="#">css3</a></li>
+							<li><a href="#"><b>theme</b></a></li>
+							<li><a href="#"><b>html5</b></a></li>
+							<li><a href="#"><b>mysql</b></a></li>
+							<li><a href="#">multipurpose</a></li>
+							<li><a href="#">responsive</a></li>
+							<li><a href="#">premium</a></li>
+							<li><a href="#">javascript</a></li>
+							<li><a href="#"><b>Best jQuery</b></a></li>
+						</ul>
+					</div>
+				</div>
+            </div><!-- end row -->
+        </div><!-- end container -->
+    </div><!-- end section -->
+
+
+
+{% endblock content %}

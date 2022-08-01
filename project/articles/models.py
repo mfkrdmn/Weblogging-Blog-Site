@@ -1,3 +1,4 @@
+from email.policy import default
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
@@ -10,6 +11,7 @@ class Articles(models.Model):
     date_posted = models.DateTimeField(default=timezone.now)
     title = models.CharField(max_length=80, blank=True)
     body =  RichTextField(max_length=750)
+    body_long =  RichTextField(max_length=5000,default="long text here")
     picture = models.ImageField(upload_to='post_images', default="profile.png")
 
     def __str__(self) :
