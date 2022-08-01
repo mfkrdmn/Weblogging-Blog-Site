@@ -53,15 +53,18 @@
                   </div>
                </div>
             </div>
-            <div class="row">
+
+            {% for i in all_articles %}
+
+            <div class="row mt-5">
                <div class="col-md-6">
-                  <img src="{% static 'images/blog1.png' %}" alt="#" />
+                  <img src="{{i.picture.url}}" alt="#" />
                </div>
                <div class="col-md-6">
                   <div class="full blog_cont">
-                     <h4>The biggest and most awesome camera  of  year</h4>
-                     <h5>MAY 14 2019 5 READ</h5>
-                     <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</p>
+                     <h4>{{i.title }}</h4>
+                     <h5>{{i.date_posted}}  / <b>{{i.user}}</b> </h5>
+                     <p>{{i.body | safe}}</p>
                   </div>
                </div>
             </div>
@@ -72,6 +75,9 @@
                   </div>
                </div>
             </div>
+
+            {% endfor %}
+
          </div>
       </div>
       <!-- end section -->
