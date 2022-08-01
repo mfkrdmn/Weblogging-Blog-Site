@@ -49,16 +49,11 @@
    <body class="main-layout">
 
     <!-- header -->
-    "    <header>
+        <header>
         <!-- header inner -->
-        <div class="container-fluid">
+        <div class="container-fluid d-flex align-items-center justify-content-center" style="height: 70px;">
             <div class="row">
-                <div class="col-lg-3 logo_section">
-                    <div class="full">
-
-                    </div>
-                </div>
-                <div class="col-lg-9">
+                <div class="col-lg-12">
                     <div class="menu-area">
                     <div class="limit-box">
                         <nav class="main-menu">
@@ -67,13 +62,10 @@
                                 <a href="{% url 'home' %}">Home</a>
                                 </li>
                                 <li>
-                                <a href="{% url 'about' %}">About</a>
-                                </li>
-                                <li>
-                                <a href="{% url 'blog' %}"> My Blog</a>
-                                </li>
-                                <li>
                                 <a href="{% url 'contact' %}">Become a Blogger</a>
+                                </li>
+                                <li>
+                                 <a href="/myblog/{{user.username}}"> My Blog</a>
                                 </li>
                                 {% if user.is_authenticated %}
                                 <li class="nav-item dropdown">   
@@ -82,7 +74,7 @@
                                        </a>
                                        <ul class="dropdown-menu">
                                           <li><a class="dropdown-item" data-toggle="modal" data-target="#posttweet"  href="#">Create an Article</a></li>
-                                          <li><a class="dropdown-item mt-2" href="profile/{{request.user}}">Edit Profile</a></li>
+                                          <li><a class="dropdown-item mt-2" href="/profile/{{request.user}}">Edit Profile</a></li>
                                        </ul>
 
                                 </li>
@@ -121,15 +113,14 @@
               <div class="modal-body">
                 <div class="container-fluid">
                   <div class="row">
-                    <form action="/upload" method="POST" enctype="multipart/form-data">
+                    <form action="/post" method="POST" enctype="multipart/form-data">
                       {% csrf_token %}
                     <div class="col-12">
-                      <img src="{{user_profile.profileimg.url}}" class="rounded-circle" id="postsharepic"alt="">
-                      <textarea id="textareaupload" name="caption" placeholder="Title" class="button soft-warning small border border-0 w-100 h-25" cols="20" rows="2"></textarea>
-                      <textarea id="textareaupload" name="caption" placeholder="Write your article here" class="button soft-warning small border border-0 w-100" cols="50" rows="5"></textarea>
+                      <textarea id="textareaupload" name="title" placeholder="Title" class="button soft-warning small border border-0 w-100 h-25" cols="20" rows="2"></textarea>
+                      <textarea id="textareaupload" name="body" placeholder="Write your article here" class="button soft-warning small border border-0 w-100" cols="50" rows="5"></textarea>
                     </div>
                     <div class="col-12 d-flex align-items-center">
-                      <input class="fileupload mx-auto text-center" type="file" name="image_upload">
+                      <input class="fileupload mx-auto text-center" type="file" name="picture">
                       <button style="font-size: 18px; background-color: turquoise; padding: 5px 20px; color: white;" class="button bg-blue" type="submit">Share</button>
                     </div>
                     </form>

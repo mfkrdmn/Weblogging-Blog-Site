@@ -1639,9 +1639,6 @@ input[type="radio"] .styled:checked+label::after {
     justify-content: center;
 }
 
-.limit-box {
-    margin: 48px 0 0;
-}
 
 .main-menu ul.menu-area-main li {
     margin: 0 10px;
@@ -1787,9 +1784,7 @@ input[type="radio"] .styled:checked+label::after {
     justify-content: center;
 }
 
-.blog_cont {
-    padding-top: 30px;
-}
+
 
 .comment_form {
 	float: left;
