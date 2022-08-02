@@ -1838,10 +1838,10 @@ input[type="radio"] .styled:checked+label::after {
     background: #e71717;
     color: #fff;
     height: 25px;
-    float: right;
-    text-align: center;
     border-radius: 50px;
     margin: 22px 0;
+	float: left !important;
+	text-align: center;
 }
 
 .reply_bt:hover,

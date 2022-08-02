@@ -106,3 +106,4 @@ def settings(request):
         return redirect("home")
     
     return render(request, "profile.html", {"user_profile" : user_profile})
+
