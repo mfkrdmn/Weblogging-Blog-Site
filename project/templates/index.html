@@ -88,30 +88,45 @@
             <div class="row">
                <div class="col-md-12">
                   <div class="heading" style="padding-left: 15px;padding-right: 15px;">
-                     <h4 style="border-bottom: solid #333 1px;">Comments for our bloggers</h4>
+                     <h4 style="border-bottom: solid #333 1px;">Last comments for blog posts</h4>
                   </div>
                </div>
             </div>
+
+            {% for i in all_comments reversed %}
+
             <div class="row">
                <div class="col-md-12">
                   <div class="full comment_blog_line">
                      <div class="row">
-                        <div class="col-md-1">
-                           <img src="{% static 'images/c_2.png' %}" alt="#" />
+                        <div class="col-md-1 my-auto">
+                           <img src="{{i.commenterimg.url}}" style="border-radius: 30px;" alt="#" />
                         </div>
                         <div class="col-md-9">
                            <div class="full contact_text">
-                              <h3>Jack</h3>
-                              <h4>Posted on Jan 10 / 2017 at 06:53 am</h4>
-                              <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet 
-                                 dolore magna aliquam erat volutpat.
-                              </p>
+                              <h3>{{i.commenter}}</h3>
+                              <h4 style="margin-top: 3px;">{{i.date_commented}}</h4>
+                              <p>{{i.comment}} / {{i.id}}</p>                   
                            </div>
                         </div>
+
+                  {% comment %} {% for a in new_ids %} {% endcomment %}
+          
+                        <div class="col-md-1 my-auto">
+                           <div class="button_section full center" style="width: 250px;">
+                              <a  href="singlepage/{{i.id}}">Click to see the post</a>
+                           </div>
+                        </div>   
+
+                  {% comment %} {% endfor %} {% endcomment %}
+                
                      </div>
                   </div>
                </div>
             </div>
+
+            {% endfor %}
+
          </div>
       </section>
       <!-- end section -->

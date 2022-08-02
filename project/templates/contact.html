@@ -18,20 +18,20 @@
       <!-- section -->
       <section class="layout_padding">
          <div class="container">
-           
-            
-            
             <div class="row">
                <div class="col-md-12">
                   <div class="full comment_form">
-                     <form action="index.html">
+
+
+                     <form action="" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
                         <fieldset>
                            <div class="col-md-12">
                               <div class="row justify-content-center">
                                  <div class="col-md-6">
                                     <input type="text" name="name" placeholder="Name" required="#" />
                                     <input type="email" name="email" placeholder="Email" required="#" />
-                                    <textarea class="wdt" placeholder="Please explain what do you want to write about"></textarea>
+                                    <textarea class="wdt" name="reason" placeholder="Please explain what do you want to write about"></textarea>
                                  </div>
                               </div>
                               <div class="row margin_top_30">
@@ -44,6 +44,8 @@
                            </div>
                         </fieldset>
                      </form>
+
+
                   </div>
                </div>
             </div>
