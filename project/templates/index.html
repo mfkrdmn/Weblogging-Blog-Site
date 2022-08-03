@@ -3,6 +3,12 @@
 
 {% block content %}
 
+<!-- Site CSS -->
+<link rel="stylesheet" href="{% static 'css/st.css' %}">
+<!-- Custom CSS -->
+<link rel="stylesheet" href="{% static 'css/custom.css' %}">
+
+
       <!-- end header -->
       <!-- revolution slider -->
       <div class="banner-slider">
@@ -43,94 +49,163 @@
          </div>
       </div>
       <!-- end revolution slider -->
-      <!-- section --> 
-      <div class="section layout_padding">
-         <div class="container">
-            <div class="row">
-               <div class="col-md-12">
-                  <div class="heading">
-                     <h3>Lastly<span class="orange_color"> added</span></h3>
-                  </div>
-               </div>
-            </div>
-
-            {% for i in all_articles %}
-
-            <div class="row mt-5">
-               <div class="col-md-6">
-                  <img src="{{i.picture.url}}" alt="#" />
-               </div>
-               <div class="col-md-6">
-                  <div class="full blog_cont">
-                     <h4>{{i.title }}</h4>
-                     <h5>{{i.date_posted}}  / <b>{{i.user}}</b></h5>
-                     <p>{{i.body | safe}}</p>
-                  </div>
-               </div>
-            </div>
-            <div class="row margin_top_30">
-               <div class="col-md-12">
-                  <div class="button_section full center margin_top_30">
-                     <a style="margin:0;" href="singlepage/{{i.id}}">Read More</a>
-                  </div>
-               </div>
-            </div>
-
-            {% endfor %}
-
-         </div>
-      </div>
-      <!-- end section -->
-
-      <!-- section -->
-      <section class="layout_padding">
-         <div class="container">
-            <div class="row">
-               <div class="col-md-12">
-                  <div class="heading" style="padding-left: 15px;padding-right: 15px;">
-                     <h4 style="border-bottom: solid #333 1px;">Last comments for blog posts</h4>
-                  </div>
-               </div>
-            </div>
-
-            {% for i in all_comments reversed %}
-
-            <div class="row">
-               <div class="col-md-12">
-                  <div class="full comment_blog_line">
-                     <div class="row">
-                        <div class="col-md-1 my-auto">
-                           <img src="{{i.commenterimg.url}}" style="border-radius: 30px;" alt="#" />
-                        </div>
-                        <div class="col-md-9">
-                           <div class="full contact_text">
-                              <h3>{{i.commenter}}</h3>
-                              <h4 style="margin-top: 3px;">{{i.date_commented}}</h4>
-                              <p>{{i.comment}} / {{i.id}}</p>                   
-                           </div>
-                        </div>
-
-                  {% comment %} {% for a in new_ids %} {% endcomment %}
-          
-                        <div class="col-md-1 my-auto">
-                           <div class="button_section full center" style="width: 250px;">
-                              <a  href="singlepage/{{i.id}}">Click to see the post</a>
-                           </div>
-                        </div>   
-
-                  {% comment %} {% endfor %} {% endcomment %}
-                
+   
+   
+<div class="contentx" style="background-color: white;">
+   <div class="container-fluid">
+      <div class="row">
+         <div class="col-3 m-0 p-0">
+                  <!-- section --> 
+            <div class="section layout_padding">
+               <div class="container">
+                  <div class="row">
+                     <div class="col-md-12">
+                  
+                           <h3 style="font-size: 40px;">Trending <span class="orange_color">Now</span></h3>
+                     
                      </div>
                   </div>
+
+                  {% for i in lastly_addeds %}
+
+                  <div class="row mt-5">
+                     <div class="col-md-4 my-auto">
+                        <img src="{{i.picture.url}}" id="lastaddedimg" alt="#" />
+                     </div>
+                     <div class="col-md-8">
+                        <div class="full blog_cont">
+                        <a href="singlepage/{{i.id}}"><span>{{i.title }}</span></a>
+                           <h5 class="mt-2">{{i.date_posted}} / <b>{{i.user}}</b></h5>
+
+                           {% for a in commented %}
+
+                           {% if i.id == a.commented_post %}
+               
+                           <h5>Comments</h5>
+                    
+                           {% endif %}
+
+                           {% endfor %}
+
+                        </div>
+                     </div>
+                  </div>
+
+                  {% endfor %}
+
                </div>
             </div>
+            <!-- end section -->
 
-            {% endfor %}
+            <!-- section -->
+            <section class="layout_padding">
+               <div class="container">
+                  <div class="row">
+                     <div class="col-md-12">
+                        <div class="heading" style="padding-left: 15px;padding-right: 15px;">
+                           <h4 style="border-bottom: solid #333 1px;">Last comments for blog posts</h4>
+                        </div>
+                     </div>
+                  </div>
 
+                  {% for i in all_comments reversed %}
+
+                  <div class="row">
+                     <div class="col-md-12">
+                        <div class="full comment_blog_line">
+                           <div class="row">
+                              <div class="col-md-1 my-auto">
+                                 <img src="{{i.commenterimg.url}}" style="border-radius: 30px;" alt="#" />
+                              </div>
+                              <div class="col-md-9">
+                                 <div class="full contact_text">
+                                    <h3>{{i.commenter}}</h3>
+                                    <h4 style="margin-top: 3px;">{{i.date_commented}}</h4>
+                              <a href="singlepage/{{i.id}}"><p>{{i.comment}} / {{i.id}}</p></a>                   
+                                 </div>
+                              </div>
+                     
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+
+                  {% endfor %}
+
+               </div>
+            </section>
          </div>
-      </section>
-      <!-- end section -->
+         <div class="col-6">
+            <div class="section layout_padding">
+               <div class="container">
+                  <div class="row">
+                     <div class="col-md-12">
+                  
+                           <h3 style="font-size: 40px;"><span class="orange_color"> Streaming</span></h3>
+                     
+                     </div>
+                  </div>
 
+                  {% for i in all_articles reversed %}
+               
+                     <div class="row mt-5">
+                        <div class="col-md-5">
+                           <img id="allPostImg" src="{{i.picture.url}}"  alt="#" />
+                        </div>
+                        <div class="col-md-6">
+                              <a href="singlepage/{{i.id}}"><span>Category</span></a> <br>
+                              <a href="singlepage/{{i.id}}"><span>{{i.title }}</span></a>
+                              <h5 class="mt-2">{{i.date_posted}}  / <b>{{i.user}}</b></h5>
+                              <a href="singlepage/{{i.id}}"><p>{{i.body | safe}}</p></a> 
+                        </div>
+                     </div>
+               
+                  {% endfor %}
+
+               </div>
+            </div>
+         </div>
+         <div class="col-3">
+        
+         <div class=" col-12 right-single">
+            <div class="widget-categories">
+               <h3 class="widget-title">Search by Categories</h3>
+               <ul>
+                  <li><a href="#">Political Science</a></li>
+                  <li><a href="#">Business Leaders Guide</a></li>
+                  <li><a href="#">Become a Product Manage</a></li>
+                  <li><a href="#">Language Education</a></li>
+                  <li><a href="#">Micro Biology</a></li>
+                  <li><a href="#">Social Media Management</a></li>
+               </ul>
+            </div>
+            <div class="widget-tags">
+               <h3 class="widget-title">Search Tags</h3>
+               <ul class="tags">
+                  <li><a href="#"><b>business</b></a></li>
+                  <li><a href="#"><b>jquery</b></a></li>
+                  <li><a href="#">corporate</a></li>
+                  <li><a href="#">portfolio</a></li>
+                  <li><a href="#">css3</a></li>
+                  <li><a href="#"><b>theme</b></a></li>
+                  <li><a href="#"><b>html5</b></a></li>
+                  <li><a href="#"><b>mysql</b></a></li>
+                  <li><a href="#">multipurpose</a></li>
+                  <li><a href="#">responsive</a></li>
+                  <li><a href="#">premium</a></li>
+                  <li><a href="#">javascript</a></li>
+                  <li><a href="#"><b>Best jQuery</b></a></li>
+               </ul>
+            </div>
+         </div>
+      </div><!-- end col -->
+         </div><!-- end row -->
+         </div>
+      </div>
+   </div>
+      
+      <!-- end section -->
+</div>
       <!-- footer -->
    
       <!-- end footer -->

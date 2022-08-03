@@ -61,12 +61,7 @@
                                 <li class="active">
                                 <a href="{% url 'home' %}">Home</a>
                                 </li>
-                                <li>
-                                <a href="{% url 'contact' %}">Become a Blogger</a>
-                                </li>
-                                <li>
-                                 <a href="/myblog/{{user.username}}"> My Blog</a>
-                                </li>
+                          
                                 {% if user.is_authenticated %}
                                 <li class="nav-item dropdown">   
                                 
@@ -74,7 +69,10 @@
                                        </a>
                                        <ul class="dropdown-menu">
                                           <li><a class="dropdown-item" data-toggle="modal" data-target="#posttweet"  href="#">Create an Article</a></li>
-                                          <li><a class="dropdown-item mt-2" href="/profile/{{request.user}}">Edit Profile</a></li>
+                                          <li>
+                                             <a class="dropdown-item mt-2" href="/myblog/{{user.username}}"> My Blog</a>
+                                          </li>
+                                          <li><a class="dropdown-item mt-2" href="/profile/{{request.user}}">Edit Profile</a></li>       
                                        </ul>
 
                                 </li>
@@ -88,10 +86,7 @@
                                  <li>
                                  <a href="{% url 'register' %}">Register</a>
                                  </li>
-                                <li>
                                  {% endif %}
-                                <a href="#"><img src="{% static 'images/search_icon.png' %}" alt="#" /></a>
-                                </li>
                             </ul>
                         </nav>
                     </div>
@@ -150,10 +145,10 @@
                     <li><span><img src="{% static 'images/mail_icon.png' %}" alt="#" /></span><span class="text_cont">demo@gmail.com<br>support@gmail.com</span></li>
                  </ul>
                  <ul class="social_icon">
-                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                    <li><a href="#"><i class="fa-brands fa-facebook"></i></a></li>
+                    <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
+                    <li><a href="#"><i class="fa-brands fa-youtube"></i></li>
+                    <li><a href="#"><i class="fa-brands fa-twitch"></i></a></li>
                  </ul>
               </div>
               <div class="col-lg-2 col-md-6">
@@ -167,6 +162,7 @@
                        <li><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i> Blog</a></li>
                        <li><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i> Testimonial</a></li>
                        <li><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i> Contact</a></li>
+                       <li><a href="{% url 'contact' %}"><i class="fa fa-angle-right" aria-hidden="true"></i> Become a Blogger</a></li>
                     </ul>
                  </div>
               </div>
