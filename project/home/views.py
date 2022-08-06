@@ -4,8 +4,8 @@ from .models import *
 from single_page.models import *
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
-# Create your views here.
 
 @login_required(login_url='/login/')
 def home(request):
@@ -18,11 +18,24 @@ def home(request):
 
     commented = Comments.objects.all()
 
-    # a = Articles.objects.values("title")
+    # a = Articles.objects.values("title")  ile models dan sağlanan verinin tekine ulaşılabilir
+
+    #Pagination
+
+    contact_list = Articles.objects.all()
+    paginator = Paginator(contact_list, 5) # Show 5 articles per page
+
+    page = request.GET.get('page')
+    try:
+        articles = paginator.page(page)
+    except PageNotAnInteger:
+        # If page is not an integer, deliver first page.
+        articles = paginator.page(1)
+    except EmptyPage:
+        # If page is out of range (e.g. 9999), deliver last page of results.
+        articles = paginator.page(paginator.num_pages)
 
     commented_length = len(commented)
-
-    #commented_post a eriştiğin an iş biter
 
     context = {
         "lastly_addeds" : lastly_addeds[:3],
@@ -30,6 +43,7 @@ def home(request):
         "all_comments" : all_comments[:5],
         "commented" :commented,
         "commented_length" :commented_length,
+        "articles" : articles,
     }
 
     return render(request, "index.html", context)

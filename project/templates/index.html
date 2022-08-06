@@ -166,7 +166,7 @@
                      </div>
                   </div>
 
-                  {% for i in all_articles reversed %}
+                  {% for i in articles reversed %}
                
                      <div class="row mt-5">
                         <div class="col-md-5">
@@ -182,6 +182,21 @@
                
                   
                      {% endfor %}
+                     <div class="pagination">
+                        <span class="step-links">
+                            {% if articles.has_previous %}
+                                <a href="?page={{ articles.previous_page_number }}"><b>previous</b></a>
+                            {% endif %}
+                    
+                            <span class="current">
+                                <b>Page</b> <span style="color: blue;"> {{ articles.number }} of {{ articles.paginator.num_pages }}</span>
+                            </span>
+                    
+                            {% if articles.has_next %}
+                                <a href="?page={{ articles.next_page_number }}"><b>next</b></a>
+                            {% endif %}
+                        </span>
+                    </div>
 
                </div>
             </div>
