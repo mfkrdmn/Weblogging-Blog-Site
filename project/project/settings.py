@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'userprofile',
     'articles',
     'single_page',
+    'category',
     'ckeditor'
 
 ]

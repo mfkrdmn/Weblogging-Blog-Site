@@ -17,7 +17,9 @@ def home(request):
     all_comments = Comments.objects.all()   
 
     commented = Comments.objects.all()
-    
+
+    # a = Articles.objects.values("title")
+
     commented_length = len(commented)
 
     #commented_post a eriştiğin an iş biter

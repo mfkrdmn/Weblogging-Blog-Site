@@ -70,7 +70,7 @@
                                        <ul class="dropdown-menu">
                                           <li><a class="dropdown-item" data-toggle="modal" data-target="#posttweet"  href="#">Create an Article</a></li>
                                           <li>
-                                             <a class="dropdown-item mt-2" href="/myblog/{{user.username}}"> My Blog</a>
+                                             <a class="dropdown-item mt-2" href="/author/{{user.username}}"> My Blog</a>
                                           </li>
                                           <li><a class="dropdown-item mt-2" href="/profile/{{request.user}}">Edit Profile</a></li>       
                                        </ul>
@@ -110,9 +110,32 @@
                   <div class="row">
                     <form action="/post" method="POST" enctype="multipart/form-data">
                       {% csrf_token %}
-                    <div class="col-12">
+                    <div class="col-12 text-center">
                       <textarea id="textareaupload" name="title" placeholder="Title" class="button soft-warning small border border-0 w-100 h-25" cols="20" rows="2"></textarea>
                       <textarea id="textareaupload" name="body" placeholder="Write your article here" class="button soft-warning small border border-0 w-100" cols="50" rows="5"></textarea>
+                      <label for="cars">Choose a category:</label>
+                      <select name="category" id="cars" class="mb-5">
+                        <option value="Arts">Arts</option>
+                        <option value="Business">Business</option>
+                        <option value="Cars">Cars</option>
+                        <option value="Celebrities">Celebrities</option>
+                        <option value="Education">Education</option>
+                        <option value="Entertainment">Entertainment</option>
+                        <option value="Science">Science</option>
+                        <option value="Fashion">Fashion</option>
+                        <option value="Finance">Finance</option>
+                        <option value="Fitness">Fitness</option>
+                        <option value="Food">Food</option>
+                        <option value="Gaming">Gaming</option>
+                        <option value="Home & Living">Home & Living</option>
+                        <option value="Luxury">Luxury</option>
+                        <option value="Movies">Movies</option>
+                        <option value="Political">Political</option>
+                        <option value="Software">Software</option>
+                        <option value="Space">Space</option>
+                        <option value="Sports">Sports</option>
+                        <option value="Technology">Technology</option>
+                      </select>
                     </div>
                     <div class="col-12 d-flex align-items-center">
                       <input class="fileupload mx-auto text-center" type="file" name="picture">
@@ -196,6 +219,6 @@
         </div>
      </footer>
 
-
+      <script src="{% static 'js/page.js' %}"></script>
       </body>
    </html>

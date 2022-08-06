@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+     {% for a in slug %}
+      
+<div class="Blog-bg">
+   <div class="container">
+      <div class="row">
+         <div class="col-md-12">
+            <div class="Blogheading">
+               <h3>Articles by {{a.slug}}</h3>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+
+   
+
+
+<div class="section layout_padding">
+   <div class="container">
+
+         {% if single_post %}
+
+      {% for i in single_post %}
+
+      
+      <div class="row mt-5">
+         <div class="col-md-6">
+            <a href="/singlepage/{{i.id}}">
+               <img id="postImage" src="{{i.picture.url}}" alt="#" />
+            </a>
+         </div>
+         <div class="col-md-6">
+            <div class="full blog_cont">
+               <a href="/singlepage/{{i.id}}">
+                  <h4>{{i.title}}</h4>
+               </a>
+               <h5>{{i.date_posted}} / <b> <a href="/author/{{i.user}}">{{i.user}}</a></b></h5>
+               <a href="/singlepage/{{i.id}}">
+                  <p>{{i.body | safe}}</p>
+               </a>
+            </div>
+         </div>
+      </div>
+
+
+      {% endfor %}
+      {% else %}
+      <div class="container">
+         <div class="row">
+            <div class="col-12 text-center noyet">
+               <h1 style="color: red;">No articles yet for <b style="text-transform: uppercase;">{{a.slug}}</b></h1>
+            </div>
+         </div>
+      </div>
+      {% endif %}
+   </div>
+</div>
+{% endfor %}
+
+      
+     
+{% endblock content %}

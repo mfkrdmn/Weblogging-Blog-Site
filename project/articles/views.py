@@ -6,7 +6,7 @@ from userprofile.models import *
 
 # Create your views here.
 @login_required(login_url='/login/')
-def myblog(request, pk):
+def author(request, pk):
     user_object = User.objects.get(username=pk)
     user_profile = Profile.objects.get(user=user_object)
     posted_articles = Articles.objects.filter(user=pk)
@@ -30,7 +30,8 @@ def post(request):
         title = request.POST["title"]
         body = request.POST["body"]
         picture = request.FILES.get("picture")
-        new_post = Articles.objects.create(user=user,title=title, picture=picture, body=body)
+        category = request.POST["category"]
+        new_post = Articles.objects.create(user=user,title=title, picture=picture, body=body, category=category)
         new_post.save()
 
         return redirect('home')
